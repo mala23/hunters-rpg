@@ -103,3 +103,12 @@ void keyPressed() {
     if (keyCode == DOWN || keyCode == 83) down = true;
   }
 }
+
+void keyReleased() {
+  if (gameStatus == playingGame) {
+    if (keyCode == LEFT || keyCode == 65) left = false;
+    if (keyCode == RIGHT || keyCode == 68) right = false;
+    if (keyCode == UP || keyCode == 87) up = false;
+    if (keyCode == DOWN || keyCode == 83) down = false;
+  }
+}
