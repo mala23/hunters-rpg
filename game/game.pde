@@ -9,6 +9,7 @@ final int gameWon = 3;
 
 void setup() {
   size(800, 600);
+  PImage startScreenImage = loadImage("Start Screen.png");
 }
 
 void draw() {
@@ -33,11 +34,7 @@ void draw() {
 //*************
 
 void drawStartScreen() {
-  background(51);
-  textAlign(CENTER);
-  textSize(40);
-  fill(255);
-  text("Press ENTER to start\nNavigate using WASD or the arrow keys", width/2, height/2);
+  image(startScreenImage);
 
   //Start Screen Control
   if ((key == ENTER) && (gameStatus != playingGame)) {
