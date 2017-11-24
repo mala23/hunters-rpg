@@ -62,8 +62,11 @@ void drawStartScreen() {
 }
 
 void drawGameOverScreen() {
+  pushStyle();
+  imageMode(CORNER);
   image(gameOverScreenImage, 0, 0);
   menuControls();
+  popStyle();
 }
 
 void drawGameWonScreen() {
@@ -127,8 +130,6 @@ void setupGame() {
 }
 
 void setupGameOver() {
-  x = 0;
-  y = 0;
   gameOverScreenImage = loadImage("data/screens/game_over_screen.png");
 }
 
