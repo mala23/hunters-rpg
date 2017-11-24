@@ -1,6 +1,11 @@
+//Libraries
+import ddf.minim.*;
+
 //Game Objects
 int gameStatus = 0;
 PImage startScreenImage;
+Minim minim;
+AudioPlayer titletrack;
 
 //Game Constants
 final int startScreen = 0;
@@ -11,6 +16,9 @@ final int gameWon = 3;
 void setup() {
   size(800, 600);
   startScreenImage = loadImage("data/start_screen.png");
+  minim = new Minim(this);
+  titletrack = minim.loadFile("data/audio/carryonmywaywardson.mp3");
+  titletrack.play();
 }
 
 void draw() {
