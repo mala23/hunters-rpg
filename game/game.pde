@@ -1,5 +1,6 @@
 //Libraries
 import ddf.minim.*;
+import ptmx.*;
 
 //Game Objects
 int gameStatus = 0;
@@ -12,6 +13,10 @@ final int startScreen = 0;
 final int playingGame = 1;
 final int gameOver = 2;
 final int gameWon = 3;
+
+//Playing Constants
+Ptmx map;
+int x, y;
 
 void setup() {
   size(800, 600);
@@ -71,27 +76,32 @@ void drawGameWonScreen() {
 }
 
 void drawGame() {
-  background(0);
-  //WASD Key Control
-  if (keyCode == 87) {
-    println("w for up"); 
-  } else if (keyCode == 65) {
-    println("a for left"); 
-  } else if (keyCode == 83) {
-    println("s for down"); 
-  } else if (keyCode == 68) {
-    println("d for right"); 
+  +  background(map.getBackgroundColor());
++  map.draw(x, y);
++
++  if (left) x -= 3;
++  if (right) x += 3;
++  if (up) y -= 3;
++  if (down) y += 3;
+ }
+
+ void setupGame() {
+  map = new Ptmx(this, "data/maps/crossroad.tmx");
+  map.setDrawMode(CENTER);
+  map.setPositionMode("CANVAS");
+  x = int(map.mapToCanvas(map.getMapSize()).x / 2);
+  y = int(map.mapToCanvas(map.getMapSize()).y / 2);
+  imageMode(CENTER);
+}
+
+void keyPressed() {
+  if (gameStatus == playingGame) {
+    if (keyCode == LEFT || keyCode == 65) left = true;
+    if (keyCode == RIGHT || keyCode == 68) right = true;
+    if (keyCode == UP || keyCode == 87) up = true;
+    if (keyCode == DOWN || keyCode == 83) down = true;
   }
-  //Arrow Key Control
-  if (keyCode == UP) {
-    println("upkey for up"); 
-  } else if (keyCode == LEFT) {
-    println("leftkey for left"); 
-  } else if (keyCode == DOWN) {
-    println("downkey for down"); 
-  } else if (keyCode == RIGHT) {
-    println("rightkey for right"); 
-  }
+}
 }
 
 void setupGame() {
