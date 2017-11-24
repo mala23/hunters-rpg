@@ -10,7 +10,7 @@ final int gameWon = 3;
 
 void setup() {
   size(800, 600);
-  startScreenImage = loadImage("data/Start_Screen.png");
+  startScreenImage = loadImage("data/start_screen.png");
 }
 
 void draw() {
