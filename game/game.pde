@@ -1,5 +1,6 @@
 //Game Objects
 int gameStatus = 0;
+PImage startScreenImage;
 
 //Game Constants
 final int startScreen = 0;
@@ -9,7 +10,7 @@ final int gameWon = 3;
 
 void setup() {
   size(800, 600);
-  PImage startScreenImage = loadImage("data/Start_Screen.png");
+  startScreenImage = loadImage("data/Start_Screen.png");
 }
 
 void draw() {
@@ -34,7 +35,7 @@ void draw() {
 //*************
 
 void drawStartScreen() {
-  image(startScreenImage);
+  image(startScreenImage, 0, 0);
 
   //Start Screen Control
   if ((key == ENTER) && (gameStatus != playingGame)) {
