@@ -17,6 +17,7 @@ final int gameWon = 3;
 //Playing Constants
 Ptmx map;
 int x, y;
+boolean left, right, up, down;
 
 void setup() {
   size(800, 600);
@@ -76,16 +77,16 @@ void drawGameWonScreen() {
 }
 
 void drawGame() {
-  +  background(map.getBackgroundColor());
-+  map.draw(x, y);
-+
-+  if (left) x -= 3;
-+  if (right) x += 3;
-+  if (up) y -= 3;
-+  if (down) y += 3;
- }
+  background(map.getBackgroundColor());
+  map.draw(x, y);
 
- void setupGame() {
+  if (left) x -= 3;
+  if (right) x += 3;
+  if (up) y -= 3;
+  if (down) y += 3;
+}
+
+void setupGame() {
   map = new Ptmx(this, "data/maps/crossroad.tmx");
   map.setDrawMode(CENTER);
   map.setPositionMode("CANVAS");
@@ -101,8 +102,4 @@ void keyPressed() {
     if (keyCode == UP || keyCode == 87) up = true;
     if (keyCode == DOWN || keyCode == 83) down = true;
   }
-}
-}
-
-void setupGame() {
 }
