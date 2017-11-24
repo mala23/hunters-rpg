@@ -9,7 +9,7 @@ final int gameWon = 3;
 
 void setup() {
   size(800, 600);
-  PImage startScreenImage = loadImage("Start Screen.png");
+  PImage startScreenImage = loadImage("data/Start_Screen.png");
 }
 
 void draw() {
