@@ -5,6 +5,7 @@ import ptmx.*;
 //Game Objects
 int gameStatus = 0;
 PImage startScreenImage;
+PImage dean;
 Minim minim;
 AudioPlayer titletrack;
 
@@ -22,6 +23,7 @@ boolean left, right, up, down;
 void setup() {
   size(800, 600);
   startScreenImage = loadImage("data/screens/start_screen.png");
+  dean = loadImage("data/dean_walking/dean_lo1.png");
   minim = new Minim(this);
   titletrack = minim.loadFile("data/audio/carryonmywaywardson.mp3");
   titletrack.play();
@@ -79,6 +81,7 @@ void drawGameWonScreen() {
 void drawGame() {
   background(map.getBackgroundColor());
   map.draw(x, y);
+  image(dean, width /2, height / 2);
 
   if (left) x -= 3;
   if (right) x += 3;
