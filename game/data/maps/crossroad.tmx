@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="32" tileheight="32" nextobjectid="28">
-  <tileset firstgid="1" source="./data/maps/terrain.tsx"/>
-  <tileset firstgid="1025" source="./data/maps/trees_plants.tsx"/>
-  <tileset firstgid="1281" source="./data/maps/base_out_atlas.tsx"/>
+ <tileset firstgid="1" source="../../../../../Library/Mobile Documents/com~apple~CloudDocs/ZHdK/17_HS/Sem1_Programming Basics/07_Exercises/Game/01_Concept/Map/data/terrain.tsx"/>
+ <tileset firstgid="1025" source="../../../../../Library/Mobile Documents/com~apple~CloudDocs/ZHdK/17_HS/Sem1_Programming Basics/07_Exercises/Game/01_Concept/Map/data/trees_plants.tsx"/>
+ <tileset firstgid="1281" source="../../../../../Library/Mobile Documents/com~apple~CloudDocs/ZHdK/17_HS/Sem1_Programming Basics/07_Exercises/Game/01_Concept/Map/data/base_out_atlas.tsx"/>
  <layer name="ground" width="60" height="60">
   <properties>
    <property name="Background" type="color" value=""/>
