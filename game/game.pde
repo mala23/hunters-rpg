@@ -15,7 +15,7 @@ final int gameWon = 3;
 
 void setup() {
   size(800, 600);
-  startScreenImage = loadImage("data/start_screen.png");
+  startScreenImage = loadImage("data/screens/start_screen.png");
   minim = new Minim(this);
   titletrack = minim.loadFile("data/audio/carryonmywaywardson.mp3");
   titletrack.play();
