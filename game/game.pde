@@ -142,12 +142,12 @@ void menuControls() {
   }
 }
 
-void keyPressed() {
-  if (gameStatus == playingGame) {
-    if (keyCode == LEFT || keyCode == 65) left = true;
-    if (keyCode == RIGHT || keyCode == 68) right = true;
-    if (keyCode == UP || keyCode == 87) up = true;
-    if (keyCode == DOWN || keyCode == 83) down = true;
+// void keyPressed() {
+//  if (gameStatus == playingGame) {
+//    if (keyCode == LEFT || keyCode == 65) left = true;
+//    if (keyCode == RIGHT || keyCode == 68) right = true;
+//    if (keyCode == UP || keyCode == 87) up = true;
+//    if (keyCode == DOWN || keyCode == 83) down = true;
 //  } else if {
 //    ((gameStatus == gamePlaying) && (key == ALT) && (key == CONTROL)); {
 //      gameStatus = gameWon;
