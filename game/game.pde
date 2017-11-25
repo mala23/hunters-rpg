@@ -113,6 +113,10 @@ void drawGame() {
 }
 
 void setupGame() {
+  left = false;
+  right = false;
+  up = false;
+  down = false;
   map = new Ptmx(this, "data/maps/crossroad.tmx");
   character = loadImage("data/dean_walking/dean_lo1.png");
   map.setDrawMode(CENTER);
