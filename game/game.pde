@@ -93,8 +93,6 @@ void drawGame() {
   image(treetops, width / 2, height / 2);
   map.draw(treetops, 4, x, y);
 
-  map.draw(collisions, 5, x, y);
-
   int prevX = x;
   int prevY = y;
 
@@ -103,11 +101,13 @@ void drawGame() {
   if (up) y -= 3;
   if (down) y += 3;
 
-  if (collisions.get(15, 15) == color(0)) {
+  map.draw(collisions, 5, x, y);
+
+  if (collisions.get(0, 16) == color(0)) {
     x = prevX;
     y = prevY;
     setupGameOver();
-    gameStatus = gameOver;
+  //  gameStatus = gameOver;
   }
 }
 
