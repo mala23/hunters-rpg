@@ -89,9 +89,13 @@ void drawGame() {
   image(treetrunks, width / 2, height / 2);
   map.draw(treetrunks, 3, x, y);
 
-  characterWalkingFrame += 1;
-  characterWalkingFrame = (characterWalkingFrame % 9);
-  image((deanWalkingFrames[characterWalkingFrame]), width / 2, (height / 2 - 32));
+  if (left || right || up || down) {
+    characterWalkingFrame += 1;
+    characterWalkingFrame = (characterWalkingFrame % 36);
+    image((deanWalkingFrames[characterWalkingFrame / 4]), width / 2, (height / 2 - 32));
+  } else {
+    image(character, width / 2, (height / 2 - 32));
+  }
 
   image(treetops, width / 2, height / 2);
   map.draw(treetops, 4, x, y);
