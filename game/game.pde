@@ -62,11 +62,9 @@ void drawStartScreen() {
 }
 
 void drawGameOverScreen() {
-  pushStyle();
   imageMode(CORNER);
   image(gameOverScreenImage, 0, 0);
   menuControls();
-  popStyle();
 }
 
 void drawGameWonScreen() {
