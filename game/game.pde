@@ -78,7 +78,6 @@ void drawGameWonScreen() {
 
 void drawGame() {
   background(map.getBackgroundColor());
-  map.draw(x, y);
 
   image(grass, width / 2, height / 2);
   map.draw(grass, 1, x, y);
@@ -142,17 +141,15 @@ void menuControls() {
   }
 }
 
-// void keyPressed() {
-//  if (gameStatus == playingGame) {
-//    if (keyCode == LEFT || keyCode == 65) left = true;
-//    if (keyCode == RIGHT || keyCode == 68) right = true;
-//    if (keyCode == UP || keyCode == 87) up = true;
-//    if (keyCode == DOWN || keyCode == 83) down = true;
-//  } else if {
-//    ((gameStatus == gamePlaying) && (key == ALT) && (key == CONTROL)); {
-//      gameStatus = gameWon;
-//  }
-  }
+void keyPressed() {
+ if (gameStatus == playingGame) {
+   if (keyCode == LEFT /* || keyCode == 65 */) left = true;
+   if (keyCode == RIGHT /* || keyCode == 68 */) right = true;
+   if (keyCode == UP /* || keyCode == 87 */) up = true;
+   if (keyCode == DOWN /* || keyCode == 83 */) down = true;
+ } else if ((gameStatus == playingGame) && (key == ALT) && (key == CONTROL)) {
+     gameStatus = gameWon;
+   }
 }
 
 void keyReleased() {
