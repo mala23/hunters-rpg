@@ -30,9 +30,9 @@ PImage character;
 void setup() {
   size(800, 600);
   startScreenImage = loadImage("data/screens/start_screen.png");
-  minim = new Minim(this);
-  titletrack = minim.loadFile("data/audio/carryonmywaywardson.mp3");
-  titletrack.play();
+//  minim = new Minim(this);
+//  titletrack = minim.loadFile("data/audio/carryonmywaywardson.mp3");
+//  titletrack.play();
 }
 
 void draw() {
