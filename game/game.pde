@@ -8,10 +8,13 @@ PImage startScreenImage;
 PImage gameOverScreenImage;
 PImage gameWonScreenImage;
 PImage character;
+PImage messageAngelsblade;
 Minim minim;
 AudioPlayer titletrack;
-int characterWalkingFrame = 0;
-PImage[] deanWalkingFrames = new PImage[9];
+int characterWalkingFrameRight = 0;
+PImage[] deanWalkingFramesRight = new PImage[9];
+int characterWalkingFrameLeft = 0;
+PImage[] deanWalkingFramesLeft = new PImage[9];
 
 //Game Constants
 final int startScreen = 0;
@@ -29,6 +32,7 @@ PGraphics treetrunks;
 PGraphics treetops;
 Ptmx map;
 int x, y;
+int messageTime;
 boolean left, right, up, down;
 String weapon = "fist";
 
@@ -90,10 +94,14 @@ void drawGame() {
   image(treetrunks, width / 2, height / 2);
   map.draw(treetrunks, 3, x, y);
 
-  if (left || right || up || down) {
-    characterWalkingFrame += 1;
-    characterWalkingFrame = (characterWalkingFrame % 36);
-    image((deanWalkingFrames[characterWalkingFrame / 4]), width / 2, (height / 2 - 32));
+  if (right || up) {
+    characterWalkingFrameRight += 1;
+    characterWalkingFrameRight = (characterWalkingFrameRight % 36);
+    image((deanWalkingFramesRight[characterWalkingFrameRight / 4]), width / 2, (height / 2 - 32));
+  } else if (left || down) {
+    characterWalkingFrameLeft += 1;
+    characterWalkingFrameLeft = (characterWalkingFrameLeft % 36);
+    image((deanWalkingFramesLeft[characterWalkingFrameLeft / 4]), width / 2, (height / 2 - 32));
   } else {
     image(character, width / 2, (height / 2 - 32));
   }
@@ -132,6 +140,13 @@ void drawGame() {
     println("met sam");
     println(weapon);
     weapon = "angelsblade";
+    // messageTime = millis();
+    // for (millis() <= (messageTime + 600)) {
+    //  imageMode(CORNER);
+    //  image(messageAngelsblade, 0, 0);
+    // }
+    // imageMode(CORNER);
+    // image(gameOverScreenImage, 0, 0);
     println("you received " + weapon);
   }
 
@@ -162,15 +177,25 @@ void setupGame() {
   down = false;
   map = new Ptmx(this, "data/maps/crossroad.tmx");
   character = loadImage("data/dean_walking/dean_lo1.png");
-  deanWalkingFrames[0] = loadImage("data/dean_walking/dean_lo2.png");
-  deanWalkingFrames[1] = loadImage("data/dean_walking/dean_lo3.png");
-  deanWalkingFrames[2] = loadImage("data/dean_walking/dean_lo4.png");
-  deanWalkingFrames[3] = loadImage("data/dean_walking/dean_lo5.png");
-  deanWalkingFrames[4] = loadImage("data/dean_walking/dean_lo6.png");
-  deanWalkingFrames[5] = loadImage("data/dean_walking/dean_lo7.png");
-  deanWalkingFrames[6] = loadImage("data/dean_walking/dean_lo8.png");
-  deanWalkingFrames[7] = loadImage("data/dean_walking/dean_lo9.png");
-  deanWalkingFrames[8] = loadImage("data/dean_walking/dean_lo10.png");
+  deanWalkingFramesRight[0] = loadImage("data/dean_walking/dean_lo2.png");
+  deanWalkingFramesRight[1] = loadImage("data/dean_walking/dean_lo3.png");
+  deanWalkingFramesRight[2] = loadImage("data/dean_walking/dean_lo4.png");
+  deanWalkingFramesRight[3] = loadImage("data/dean_walking/dean_lo5.png");
+  deanWalkingFramesRight[4] = loadImage("data/dean_walking/dean_lo6.png");
+  deanWalkingFramesRight[5] = loadImage("data/dean_walking/dean_lo7.png");
+  deanWalkingFramesRight[6] = loadImage("data/dean_walking/dean_lo8.png");
+  deanWalkingFramesRight[7] = loadImage("data/dean_walking/dean_lo9.png");
+  deanWalkingFramesRight[8] = loadImage("data/dean_walking/dean_lo10.png");
+  deanWalkingFramesLeft[0] = loadImage("data/dean_walking/dean_lo11.png");
+  deanWalkingFramesLeft[1] = loadImage("data/dean_walking/dean_lo12.png");
+  deanWalkingFramesLeft[2] = loadImage("data/dean_walking/dean_lo13.png");
+  deanWalkingFramesLeft[3] = loadImage("data/dean_walking/dean_lo14.png");
+  deanWalkingFramesLeft[4] = loadImage("data/dean_walking/dean_lo15.png");
+  deanWalkingFramesLeft[5] = loadImage("data/dean_walking/dean_lo16.png");
+  deanWalkingFramesLeft[6] = loadImage("data/dean_walking/dean_lo17.png");
+  deanWalkingFramesLeft[7] = loadImage("data/dean_walking/dean_lo18.png");
+  deanWalkingFramesLeft[8] = loadImage("data/dean_walking/dean_lo19.png");
+  messageAngelsblade = loadImage("data/messages/message_angelsblade.png");
   map.setDrawMode(CENTER);
   map.setPositionMode("CANVAS");
   npcsam = createGraphics(35, 35);
