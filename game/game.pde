@@ -6,6 +6,7 @@ import ptmx.*;
 int gameStatus = 0;
 PImage startScreenImage;
 PImage gameOverScreenImage;
+PImage gameWonScreenImage;
 PImage character;
 Minim minim;
 AudioPlayer titletrack;
@@ -19,6 +20,8 @@ final int gameOver = 2;
 final int gameWon = 3;
 
 //Playing Constants
+PGraphics npcsam;
+PGraphics npcdemon;
 PGraphics collisions;
 PGraphics grass;
 PGraphics path;
@@ -27,13 +30,14 @@ PGraphics treetops;
 Ptmx map;
 int x, y;
 boolean left, right, up, down;
+String weapon = "fist";
 
 void setup() {
   size(800, 600);
   startScreenImage = loadImage("data/screens/start_screen.png");
-//  minim = new Minim(this);
-//  titletrack = minim.loadFile("data/audio/carryonmywaywardson.mp3");
-//  titletrack.play();
+  minim = new Minim(this);
+  titletrack = minim.loadFile("data/audio/carryonmywaywardson.mp3");
+  titletrack.play();
 }
 
 void draw() {
@@ -69,11 +73,8 @@ void drawGameOverScreen() {
 }
 
 void drawGameWonScreen() {
-  background(0);
-  textAlign(CENTER);
-  textSize(40);
-  fill(255);
-  text("You won. Press ENTER to restart.", width/2, height/2);
+  imageMode(CORNER);
+  image(gameWonScreenImage, 0, 0);
   menuControls();
 }
 
@@ -116,8 +117,41 @@ void drawGame() {
       collisions.get(0, 32) == color(0)) {
     x = prevX;
     y = prevY;
-    setupGameOver();
+  //  setupGameOver();
   //  gameStatus = gameOver;
+  }
+
+  map.draw(npcsam, 7, x, y);
+
+  if (npcsam.get(0, 0) == color(0) ||
+      npcsam.get(16, 0) == color(0) ||
+      npcsam.get(32, 0) == color(0) ||
+      npcsam.get(0, 32) == color(0)) {
+    x = prevX;
+    y = prevY;
+    println("met sam");
+    println(weapon);
+    weapon = "angelsblade";
+    println("you received " + weapon);
+  }
+
+  map.draw(npcdemon, 6, x, y);
+
+  if (npcdemon.get(0, 0) == color(0) ||
+      npcdemon.get(16, 0) == color(0) ||
+      npcdemon.get(32, 0) == color(0) ||
+      npcdemon.get(0, 32) == color(0)) {
+    println("met demon");
+    println(weapon);
+    x = prevX;
+    y = prevY;
+    if (weapon != "angelsblade") {
+      setupGameOver();
+      gameStatus = gameOver;
+    } else {
+      setupGameWon();
+      gameStatus = gameWon;
+    }
   }
 }
 
@@ -139,6 +173,8 @@ void setupGame() {
   deanWalkingFrames[8] = loadImage("data/dean_walking/dean_lo10.png");
   map.setDrawMode(CENTER);
   map.setPositionMode("CANVAS");
+  npcsam = createGraphics(35, 35);
+  npcdemon = createGraphics(35, 35);
   collisions = createGraphics(32, 32);
   grass = createGraphics(width, height);
   path = createGraphics(width, height);
@@ -151,6 +187,10 @@ void setupGame() {
 
 void setupGameOver() {
   gameOverScreenImage = loadImage("data/screens/game_over_screen.png");
+}
+
+void setupGameWon() {
+  gameWonScreenImage = loadImage("data/screens/game_won_screen.png");
 }
 
 void menuControls() {
@@ -166,8 +206,6 @@ void keyPressed() {
    if (keyCode == RIGHT /* || keyCode == 68 */) right = true;
    if (keyCode == UP /* || keyCode == 87 */) up = true;
    if (keyCode == DOWN /* || keyCode == 83 */) down = true;
- } else if ((gameStatus == playingGame) && (key == ALT) && (key == CONTROL)) {
-     gameStatus = gameWon;
    }
 }
 
