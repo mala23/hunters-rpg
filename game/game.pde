@@ -207,6 +207,7 @@ void setupGame() {
   treetrunks = createGraphics(width, height);
   x = int(map.mapToCanvas(map.getMapSize()).x / 2) + 300;
   y = int(map.mapToCanvas(map.getMapSize()).y / 2) + 400;
+  weapon = "fist";
   imageMode(CENTER);
 }
 
